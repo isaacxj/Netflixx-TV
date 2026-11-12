@@ -77,6 +77,7 @@ fun SwitchColors(): SwitchColors {
 
         AppThemeColors.GREEN,
         AppThemeColors.ORANGE,
+        AppThemeColors.NETFLIXX,
         AppThemeColors.BOLD_BLUE,
         AppThemeColors.OLED_BLACK,
         AppThemeColors.RED,

@@ -1,10 +1,9 @@
 name: Development build
 
+# Upstream Wholphin's workflow. Netflixx builds with netflixx.yml instead, so
+# this only runs by hand (it expects Wholphin's tags and signing secrets).
 on:
-  push:
-    branches:
-      - main
-      - develop/*
+  workflow_dispatch:
 
 defaults:
   run:

@@ -9,13 +9,14 @@ import com.github.damontecres.wholphin.ui.theme.colors.BlueThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.BoldBlueThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.BrownThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.GreenThemeColors
+import com.github.damontecres.wholphin.ui.theme.colors.NetflixxThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.OledThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.OrangeThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.PurpleThemeColors
 import com.github.damontecres.wholphin.ui.theme.colors.RedThemeColors
 
 val LocalTheme =
-    compositionLocalOf<AppThemeColors> { AppThemeColors.PURPLE }
+    compositionLocalOf<AppThemeColors> { AppThemeColors.NETFLIXX }
 
 fun getThemeColors(appThemeColors: AppThemeColors): ThemeColors =
     when (appThemeColors) {
@@ -27,13 +28,14 @@ fun getThemeColors(appThemeColors: AppThemeColors): ThemeColors =
         AppThemeColors.BOLD_BLUE -> BoldBlueThemeColors
         AppThemeColors.RED -> RedThemeColors
         AppThemeColors.BROWN -> BrownThemeColors
+        AppThemeColors.NETFLIXX -> NetflixxThemeColors
         AppThemeColors.UNRECOGNIZED -> PurpleThemeColors
     }
 
 @Composable
 fun WholphinTheme(
     darkTheme: Boolean = true,
-    appThemeColors: AppThemeColors = AppThemeColors.PURPLE,
+    appThemeColors: AppThemeColors = AppThemeColors.NETFLIXX,
     content: @Composable () -> Unit,
 ) {
     val themeColors = getThemeColors(appThemeColors)

@@ -1,0 +1,86 @@
+name: Netflixx build
+
+# Every push to main builds the TV app and publishes it as a GitHub release
+# (v1.0.<run number>). The app's built-in updater checks these releases.
+#
+# With the signing secrets set (scripts/make-signing-key.sh prints them), it
+# builds a signed release APK. Without them it builds a debug APK, which works
+# but uses a throwaway key, so each new build has to be installed fresh.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: netflixx-build
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NETFLIXX_VERSION_CODE: ${{ github.run_number }}
+      NETFLIXX_VERSION_NAME: 1.0.${{ github.run_number }}
+      GRADLE_OPTS: "-Dorg.gradle.jvmargs='-Xmx12g -XX:MaxMetaspaceSize=1024m'"
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build
+        env:
+          KEY_ALIAS: "${{ secrets.KEY_ALIAS }}"
+          KEY_PASSWORD: "${{ secrets.KEY_PASSWORD }}"
+          KEY_STORE_PASSWORD: "${{ secrets.KEY_STORE_PASSWORD }}"
+          SIGNING_KEY: "${{ secrets.SIGNING_KEY }}"
+        run: |
+          if [[ -n "$KEY_ALIAS" ]]; then
+            ./gradlew assembleDefaultRelease
+            echo "KIND=release" >> "$GITHUB_ENV"
+          else
+            echo "::warning::No signing key in the repo secrets, so this is a debug build. Run scripts/make-signing-key.sh to set one up."
+            ./gradlew assembleDefaultDebug
+            echo "KIND=debug" >> "$GITHUB_ENV"
+          fi
+
+      - name: Name the APKs
+        run: |
+          mkdir -p dist
+          find app/build/outputs/apk -name '*.apk' -print0 |
+            while IFS= read -r -d '' apk; do
+              abi=$(basename "$apk" .apk | grep -oE '(armeabi-v7a|arm64-v8a|x86_64)$' || true)
+              if [[ -n "$abi" ]]; then
+                cp "$apk" "dist/Netflixx-$KIND-$abi.apk"
+              else
+                cp "$apk" "dist/Netflixx-$KIND.apk"
+              fi
+            done
+          ls -la dist
+          sha256sum dist/*.apk
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          {
+            echo "Netflixx for Android TV and Fire TV, built from \`${GITHUB_SHA::7}\`."
+            echo
+            echo "**Which file:** \`Netflixx-$KIND.apk\` works on every TV. The others are smaller builds for one chip type: Fire TVs are usually \`armeabi-v7a\`."
+            echo
+            echo "Install with \`adb install -r Netflixx-$KIND.apk\`, or let the app update itself (Settings, Check for updates)."
+          } > notes.md
+          gh release create "v$NETFLIXX_VERSION_NAME" dist/*.apk \
+            --title "$NETFLIXX_VERSION_NAME" --target "$GITHUB_SHA" --notes-file notes.md --latest

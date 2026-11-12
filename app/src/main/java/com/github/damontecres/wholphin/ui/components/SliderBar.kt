@@ -146,6 +146,7 @@ fun sliderActiveColor(focused: Boolean): Color {
         AppThemeColors.BLUE,
         AppThemeColors.GREEN,
         AppThemeColors.ORANGE,
+        AppThemeColors.NETFLIXX,
         AppThemeColors.RED,
         AppThemeColors.BROWN,
         -> {
@@ -189,6 +190,7 @@ fun sliderInactiveColor(focused: Boolean): Color {
         AppThemeColors.BLUE,
         AppThemeColors.GREEN,
         AppThemeColors.ORANGE,
+        AppThemeColors.NETFLIXX,
         AppThemeColors.BOLD_BLUE,
         AppThemeColors.RED,
         AppThemeColors.BROWN,

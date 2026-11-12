@@ -1,3 +1,56 @@
+# Netflixx for TV
+
+![Netflixx](docs/netflixx-banner.png)
+
+The Netflixx app for Android TV and Fire TV: our Jellyfin server on stx-server, in the
+Netflixx look. It's [Wholphin](https://github.com/damontecres/Wholphin) with its own name,
+icon, banner and a Netflixx color theme (near-black with an amber accent, matching the
+Netflixx web theme in [isaacxj/Netflixx](https://github.com/isaacxj/Netflixx)). It installs
+next to Wholphin as `com.isaacxj.netflixx`, and updates itself from this repo's releases.
+
+## Install on the TV
+
+1. On the Fire TV: **Settings → My Fire TV (Device & Software on TVs) → About**, press the
+   device name seven times to unlock Developer Options, then turn on **ADB debugging** and
+   **Apps from Unknown Sources**. Note the TV's IP under About → Network.
+2. Download `Netflixx-release.apk` (or `Netflixx-debug.apk` until signing is set up) from the
+   [latest release](https://github.com/isaacxj/Netflixx-TV/releases/latest).
+3. From a computer on the same Wi-Fi, with Android platform tools installed:
+
+   ```bash
+   adb connect <tv-ip>:5555      # accept the prompt on the TV
+   adb install -r Netflixx-release.apk
+   ```
+
+4. Open Netflixx and add the server: `http://192.168.1.134:8096`.
+
+After that the app updates itself: **Settings → Check for updates**.
+
+## Builds
+
+Every push to `main` runs [Netflixx build](.github/workflows/netflixx.yml), which publishes
+release `v1.0.<run>` with the APKs. `Netflixx-release.apk` runs on every TV; the
+`-armeabi-v7a` and `-arm64-v8a` files are smaller builds for one chip type.
+
+Android only installs an update signed with the same key as the app already installed, so
+set up a signing key once: run `bash scripts/make-signing-key.sh` on any machine with Docker
+or Java, add the four secrets it prints under **Settings → Secrets and variables → Actions**,
+and keep the keystore file and password in a password manager. Until then the build makes a
+debug APK with a throwaway key, and each new build needs a fresh install.
+
+## Staying up to date with Wholphin
+
+This is a GitHub fork, so **Sync fork** on the repo page pulls in Wholphin's latest changes.
+The Netflixx changes are small and kept apart: `NetflixxThemeColors.kt`, the `NETFLIXX` theme
+(default) in `WholphinDataStore.proto`, the app name in `values/strings.xml`, the icons and
+banner under `res/mipmap-*`, the app ID and version in `app/build.gradle.kts`, the update
+source in `AppPreference.kt` and `UpdateChecker.kt`, and the workflows.
+
+Wholphin is licensed under the GPL-2.0, and so is this fork. Everything below is Wholphin's
+own README.
+
+---
+
 # Wholphin - an OSS Android TV client for Jellyfin
 
 > "Never half-phin two jellies. Always wholphin one jelly."

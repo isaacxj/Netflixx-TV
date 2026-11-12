@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name" translatable="false">Wholphin</string>
-    <string name="app_name_long" translatable="false">Wholphin</string>
+    <string name="app_name" translatable="false">Netflixx</string>
+    <string name="app_name_long" translatable="false">Netflixx</string>
+    <string name="netflixx_theme" translatable="false">Netflixx</string>
 
     <string name="about">About</string>
     <string name="active_recordings">Active Recordings</string>
@@ -636,6 +637,7 @@
         <item>@string/black</item>
         <item>@string/red</item>
         <item>@string/brown</item>
+        <item>@string/netflixx_theme</item>
     </string-array>
 
     <string name="skip_ignore">Ignore</string>
