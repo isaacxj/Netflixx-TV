@@ -50,8 +50,11 @@ val gitTags =
 
 val gitDescribe =
     providers
-        .exec { commandLine("git", "describe", "--tags", "--long", "--match=v*") }
-        .standardOutput.asText
+        .exec {
+            commandLine("git", "describe", "--tags", "--long", "--match=v*")
+            // Netflixx: the fork has no v* tags, so git describe fails. Treat that as no version.
+            isIgnoreExitValue = true
+        }.standardOutput.asText
         .getOrElse("v0.0.0")
 
 kotlin {
