@@ -39,7 +39,7 @@ fun SwitchWithLabel(
     Row(
         modifier =
             modifier
-                .clip(shape = RoundedCornerShape(20.dp))
+                .clip(shape = RoundedCornerShape(8.dp))
                 .background(
                     if (isFocused) {
                         MaterialTheme.colorScheme.onSurface

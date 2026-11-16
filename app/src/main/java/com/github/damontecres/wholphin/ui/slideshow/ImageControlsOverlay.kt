@@ -20,7 +20,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.media3.common.util.UnstableApi
-import androidx.tv.material3.Button
 import androidx.tv.material3.ButtonDefaults
 import androidx.tv.material3.Icon
 import com.github.damontecres.wholphin.R
@@ -31,6 +30,7 @@ import com.github.damontecres.wholphin.ui.tryRequestFocus
 import com.github.damontecres.wholphin.util.ExceptionHandler
 import kotlinx.coroutines.launch
 import kotlin.time.Duration
+import com.github.damontecres.wholphin.ui.components.SquareButton as Button
 
 @OptIn(UnstableApi::class)
 @Composable

@@ -49,10 +49,12 @@ fun WholphinTheme(
         androidx.compose.material3.MaterialTheme(
             colorScheme = if (darkTheme) themeColors.darkSchemeMaterial else themeColors.lightSchemeMaterial,
             typography = AppTypographyMaterial,
+            shapes = AppShapesMaterial,
         ) {
             MaterialTheme(
                 colorScheme = colorScheme,
                 typography = AppTypography,
+                shapes = AppShapes,
                 content = content,
             )
         }

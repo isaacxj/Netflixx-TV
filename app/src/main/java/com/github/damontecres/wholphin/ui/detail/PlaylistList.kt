@@ -249,7 +249,7 @@ fun PlaylistDialog(
                 Modifier
                     .graphicsLayer {
                         this.clip = true
-                        this.shape = RoundedCornerShape(24.0.dp)
+                        this.shape = RoundedCornerShape(8.dp)
                     }.drawBehind { drawRect(color = elevatedContainerColor) }
                     .padding(PaddingValues(16.dp)),
         ) {

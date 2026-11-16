@@ -171,6 +171,7 @@ val NetflixxThemeColors =
                 inverseSurface = inverseSurfaceDark,
                 inverseOnSurface = inverseOnSurfaceDark,
                 inversePrimary = inversePrimaryDark,
+                surfaceTint = onSurfaceDark,
             )
 
         override val darkScheme =
@@ -202,5 +203,6 @@ val NetflixxThemeColors =
                 inverseOnSurface = inverseOnSurfaceDark,
                 inversePrimary = inversePrimaryDark,
                 border = inversePrimaryDark,
+                surfaceTint = onSurfaceDark,
             )
     }

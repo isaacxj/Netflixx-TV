@@ -173,7 +173,7 @@ fun StarRating(
     Box(
         modifier =
             modifier
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(8.dp))
                 .background(bgColor),
     ) {
         LazyRow(
@@ -228,7 +228,7 @@ fun StarRating(
                     Box(
                         modifier =
                             Modifier
-                                .clip(RoundedCornerShape(16.dp))
+                                .clip(RoundedCornerShape(8.dp))
                                 .background(focusedColor),
                     ) {
                         Icon(

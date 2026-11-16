@@ -64,7 +64,7 @@ fun ProgramDialog(
                 Modifier
                     .background(
                         MaterialTheme.colorScheme.surfaceColorAtElevation(5.dp),
-                        shape = RoundedCornerShape(16.dp),
+                        shape = RoundedCornerShape(8.dp),
                     ).focusRequester(focusRequester),
         ) {
             Column(

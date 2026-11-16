@@ -52,10 +52,12 @@ import androidx.tv.material3.DrawerState
 import androidx.tv.material3.DrawerValue
 import androidx.tv.material3.ListItem
 import androidx.tv.material3.ListItemDefaults
+import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.NavigationDrawerItemColors
 import androidx.tv.material3.NavigationDrawerItemDefaults
 import androidx.tv.material3.NavigationDrawerScope
 import androidx.tv.material3.rememberDrawerState
+import com.github.damontecres.wholphin.ui.theme.NetflixxShapes
 
 /**
  * This is a re-implementation of [androidx.tv.material3.ModalNavigationDrawer].
@@ -204,6 +206,7 @@ internal fun NavigationDrawerScope.NavigationDrawerItem(
         onLongClick = onLongClick,
         tonalElevation = tonalElevation,
         colors = colors.toToggleableListItemColors(hasFocus),
+        shape = ListItemDefaults.shape(shape = NetflixxShapes.control),
         scale = ListItemDefaults.scale(1f, 1f),
         interactionSource = interactionSource,
     )
@@ -214,10 +217,10 @@ private fun NavigationDrawerItemColors.toToggleableListItemColors(doesNavigation
     ListItemDefaults.colors(
         containerColor = containerColor,
         contentColor = if (doesNavigationDrawerHaveFocus) contentColor else inactiveContentColor,
-        focusedContainerColor = focusedContainerColor,
-        focusedContentColor = focusedContentColor,
-        pressedContainerColor = pressedContainerColor,
-        pressedContentColor = pressedContentColor,
+        focusedContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = .14f),
+        focusedContentColor = MaterialTheme.colorScheme.onSurface,
+        pressedContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = .2f),
+        pressedContentColor = MaterialTheme.colorScheme.onSurface,
         selectedContainerColor = selectedContainerColor,
         selectedContentColor = selectedContentColor,
         disabledContainerColor = disabledContainerColor,
@@ -227,8 +230,8 @@ private fun NavigationDrawerItemColors.toToggleableListItemColors(doesNavigation
             } else {
                 disabledInactiveContentColor
             },
-        focusedSelectedContainerColor = focusedSelectedContainerColor,
-        focusedSelectedContentColor = focusedSelectedContentColor,
-        pressedSelectedContainerColor = pressedSelectedContainerColor,
-        pressedSelectedContentColor = pressedSelectedContentColor,
+        focusedSelectedContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = .14f),
+        focusedSelectedContentColor = MaterialTheme.colorScheme.onSurface,
+        pressedSelectedContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = .2f),
+        pressedSelectedContentColor = MaterialTheme.colorScheme.onSurface,
     )

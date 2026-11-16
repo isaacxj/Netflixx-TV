@@ -254,10 +254,10 @@ fun DialogPopup(
                                 waiting = false
                             }
                             false
-                        }.shadow(elevation = elevation, shape = RoundedCornerShape(28.0.dp))
+                        }.shadow(elevation = elevation, shape = RoundedCornerShape(8.dp))
                         .graphicsLayer {
                             this.clip = true
-                            this.shape = RoundedCornerShape(28.0.dp)
+                            this.shape = RoundedCornerShape(8.dp)
                         }.drawBehind { drawRect(color = elevatedContainerColor) }
                         .padding(PaddingValues(24.dp)),
             )

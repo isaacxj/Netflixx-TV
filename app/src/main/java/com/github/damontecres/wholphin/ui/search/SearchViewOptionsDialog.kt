@@ -47,7 +47,7 @@ fun SearchViewOptionsDialog(
                     .width(400.dp)
                     .background(
                         MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
-                        RoundedCornerShape(28.dp),
+                        RoundedCornerShape(8.dp),
                     ).padding(24.dp),
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
