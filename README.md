@@ -4,7 +4,7 @@
 
 The Netflixx app for Android TV and Fire TV: our Jellyfin server on stx-server, in the
 Netflixx look. It's [Wholphin](https://github.com/damontecres/Wholphin) with its own name,
-icon, banner and a Netflixx color theme (near-black with an amber accent, matching the
+icon, banner and a Netflixx color theme (near-black with a red accent, matching the
 Netflixx web theme in [isaacxj/Netflixx](https://github.com/isaacxj/Netflixx)). It installs
 next to Wholphin as `com.isaacxj.netflixx`, and updates itself from this repo's releases.
 
