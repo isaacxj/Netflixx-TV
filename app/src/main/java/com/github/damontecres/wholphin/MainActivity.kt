@@ -59,6 +59,8 @@ import com.github.damontecres.wholphin.ui.CoilConfig
 import com.github.damontecres.wholphin.ui.LocalImageUrlService
 import com.github.damontecres.wholphin.ui.collectLatestIn
 import com.github.damontecres.wholphin.ui.components.LoadingPage
+import com.github.damontecres.wholphin.ui.components.NetflixxIntro
+import com.github.damontecres.wholphin.ui.components.NetflixxIntroState
 import com.github.damontecres.wholphin.ui.launchDefault
 import com.github.damontecres.wholphin.ui.nav.Destination
 import com.github.damontecres.wholphin.ui.playback.PlayExternalViewModel
@@ -280,6 +282,18 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                         }
+                    }
+                    // Startup animation, drawn over the app while it loads underneath.
+                    // Only on a normal launch, not when opened by a link to play something.
+                    var showIntro by remember {
+                        mutableStateOf(!NetflixxIntroState.played && intent?.action == Intent.ACTION_MAIN)
+                    }
+                    if (showIntro) {
+                        LaunchedEffect(Unit) { NetflixxIntroState.played = true }
+                        NetflixxIntro(
+                            onFinished = { showIntro = false },
+                            modifier = Modifier.fillMaxSize(),
+                        )
                     }
                 }
             }

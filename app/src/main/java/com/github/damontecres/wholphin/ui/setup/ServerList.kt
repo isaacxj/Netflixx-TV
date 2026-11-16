@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Warning
@@ -35,6 +34,7 @@ import com.github.damontecres.wholphin.data.model.JellyfinServer
 import com.github.damontecres.wholphin.ui.AppColors
 import com.github.damontecres.wholphin.ui.Cards
 import com.github.damontecres.wholphin.ui.components.CircularProgress
+import com.github.damontecres.wholphin.ui.theme.NetflixxShapes
 import org.jellyfin.sdk.model.api.PublicSystemInfo
 import java.util.UUID
 
@@ -133,7 +133,7 @@ fun ServerIconCard(
             onLongClick = if (allowDelete) onLongClick else null,
             interactionSource = interactionSource,
             modifier = Modifier.size(cardSize),
-            shape = ClickableSurfaceDefaults.shape(shape = CircleShape),
+            shape = ClickableSurfaceDefaults.shape(shape = NetflixxShapes.panel),
             colors =
                 ClickableSurfaceDefaults.colors(
                     containerColor =
@@ -158,7 +158,7 @@ fun ServerIconCard(
                                     width = 3.dp,
                                     color = MaterialTheme.colorScheme.onSurface,
                                 ),
-                            shape = CircleShape,
+                            shape = NetflixxShapes.panel,
                         ),
                 ),
             scale = ClickableSurfaceDefaults.scale(focusedScale = 1.2f),
@@ -267,7 +267,7 @@ fun AddServerCard(
                 Modifier
                     .size(cardSize)
                     .testTag("add_server"),
-            shape = ClickableSurfaceDefaults.shape(shape = CircleShape),
+            shape = ClickableSurfaceDefaults.shape(shape = NetflixxShapes.panel),
             colors =
                 ClickableSurfaceDefaults.colors(
                     containerColor = addServerColor.copy(alpha = 0.4f),
@@ -282,7 +282,7 @@ fun AddServerCard(
                                     width = 3.dp,
                                     color = MaterialTheme.colorScheme.onSurface,
                                 ),
-                            shape = CircleShape,
+                            shape = NetflixxShapes.panel,
                         ),
                 ),
             scale = ClickableSurfaceDefaults.scale(focusedScale = 1.2f),

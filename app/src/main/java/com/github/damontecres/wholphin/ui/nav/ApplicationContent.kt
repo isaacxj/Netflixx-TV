@@ -1,5 +1,11 @@
 package com.github.damontecres.wholphin.ui.nav
 
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -23,6 +29,12 @@ import com.github.damontecres.wholphin.ui.components.ErrorMessage
 import com.github.damontecres.wholphin.ui.launchIO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+
+// Page changes: the new page fades in while settling into place, the old one fades out quickly
+private val pageEnterTransition =
+    fadeIn(tween(durationMillis = 280, delayMillis = 60, easing = FastOutSlowInEasing)) +
+        scaleIn(tween(durationMillis = 340, easing = FastOutSlowInEasing), initialScale = 0.97f)
+private val pageExitTransition = fadeOut(tween(durationMillis = 160))
 
 // Top scrim configuration for text readability (clock, season tabs)
 const val TOP_SCRIM_ALPHA = 0.55f
@@ -74,6 +86,8 @@ fun ApplicationContent(
                     rememberSaveableStateHolderNavEntryDecorator(),
                     rememberViewModelStoreNavEntryDecorator(),
                 ),
+            transitionSpec = { pageEnterTransition togetherWith pageExitTransition },
+            popTransitionSpec = { pageEnterTransition togetherWith pageExitTransition },
             entryProvider = { key ->
                 key as Destination
                 val contentKey = "${key}_${server?.id}_${user?.id}"

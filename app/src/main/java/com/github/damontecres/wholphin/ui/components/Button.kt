@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.NonRestartableComposable
 import androidx.compose.ui.Alignment
@@ -34,11 +33,12 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.ProvideTextStyle
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
+import com.github.damontecres.wholphin.ui.theme.NetflixxShapes
 
 /**
  * This is a re-implementation of [androidx.tv.material3.Button] with altered sizing, padding, colors, etc
  *
- * This allows for creating smaller and fully circular Buttons.
+ * This allows for creating smaller Buttons. Netflixx gives them squared-off corners.
  */
 @Composable
 fun Button(
@@ -50,7 +50,7 @@ fun Button(
     glow: ClickableSurfaceGlow = ClickableSurfaceDefaults.glow(),
     shape: ClickableSurfaceShape =
         ClickableSurfaceDefaults.shape(
-            shape = CircleShape,
+            shape = NetflixxShapes.control,
         ),
     colors: ClickableSurfaceColors =
         ClickableSurfaceDefaults.colors(
@@ -77,7 +77,7 @@ fun Button(
                             width = 1.5.dp,
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f),
                         ),
-                    shape = CircleShape,
+                    shape = NetflixxShapes.control,
                 ),
         ),
     contentPadding: PaddingValues = DefaultButtonPadding,

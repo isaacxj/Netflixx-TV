@@ -151,7 +151,7 @@ fun CollectionFolderViewScope.CollectionFolderList(
                             .fillMaxHeight()
                             .background(
                                 color = Color.Transparent, // MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
-                                shape = RoundedCornerShape(16.dp),
+                                shape = RoundedCornerShape(8.dp),
                             ).padding(8.dp),
                 )
             }

@@ -271,7 +271,7 @@ fun PlaybackDialog(
                             .wrapContentSize()
                             .background(
                                 AppColors.TransparentBlack50,
-                                shape = RoundedCornerShape(16.dp),
+                                shape = RoundedCornerShape(8.dp),
                             ),
                 ) {
                     SubtitleDelay(

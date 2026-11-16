@@ -677,7 +677,7 @@ fun AlbumHeader(
             modifier =
                 Modifier
                     .fillMaxWidth(.20f)
-                    .clip(RoundedCornerShape(16.dp)),
+                    .clip(RoundedCornerShape(8.dp)),
         )
         Column(
             verticalArrangement = Arrangement.spacedBy(4.dp),

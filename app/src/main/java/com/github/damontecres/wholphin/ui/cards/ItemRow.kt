@@ -20,6 +20,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.focusRestorer
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.tv.material3.MaterialTheme
@@ -134,6 +135,7 @@ fun ItemRowTitle(
 ) = Text(
     text = title,
     style = MaterialTheme.typography.titleLarge,
+    fontWeight = FontWeight.SemiBold,
     color = MaterialTheme.colorScheme.onBackground,
     modifier = modifier.padding(start = 8.dp),
 )

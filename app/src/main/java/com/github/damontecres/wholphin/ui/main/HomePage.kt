@@ -1,5 +1,7 @@
 package com.github.damontecres.wholphin.ui.main
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.focusGroup
 import androidx.compose.foundation.gestures.LocalBringIntoViewSpec
@@ -34,6 +36,7 @@ import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.focusRestorer
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.key.KeyEvent
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalContext
@@ -565,6 +568,12 @@ fun HomePageHeader(
                 else -> null
             }
         }
+    // Fade the details in whenever the focused item changes, instead of swapping instantly
+    val headerAlpha = remember { Animatable(1f) }
+    LaunchedEffect(item?.id) {
+        headerAlpha.snapTo(0f)
+        headerAlpha.animateTo(1f, tween(durationMillis = 320, delayMillis = 80))
+    }
     HomePageHeader(
         title = title,
         subtitle = subtitle,
@@ -575,7 +584,7 @@ fun HomePageHeader(
         endsAt = item?.data?.endDate,
         showLogo = showLogo,
         logoImageUrl = rememberLogoUrl(item),
-        modifier = modifier,
+        modifier = modifier.graphicsLayer { alpha = headerAlpha.value },
     )
 }
 

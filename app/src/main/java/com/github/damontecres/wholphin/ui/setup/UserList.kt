@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
@@ -42,7 +41,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.DialogProperties
 import androidx.tv.material3.Border
-import androidx.tv.material3.Button
 import androidx.tv.material3.ClickableSurfaceDefaults
 import androidx.tv.material3.Icon
 import androidx.tv.material3.MaterialTheme
@@ -57,10 +55,12 @@ import com.github.damontecres.wholphin.ui.PreviewTvSpec
 import com.github.damontecres.wholphin.ui.components.DialogItem
 import com.github.damontecres.wholphin.ui.components.DialogPopup
 import com.github.damontecres.wholphin.ui.isNotNullOrBlank
+import com.github.damontecres.wholphin.ui.theme.NetflixxShapes
 import com.github.damontecres.wholphin.ui.theme.WholphinTheme
 import com.github.damontecres.wholphin.ui.toServerString
 import com.github.damontecres.wholphin.ui.tryRequestFocus
 import java.util.UUID
+import com.github.damontecres.wholphin.ui.components.SquareButton as Button
 
 /**
  * Display a list of users plus option to add a new one or switch servers
@@ -213,7 +213,7 @@ private fun UserIconCard(
             onLongClick = onLongClick,
             interactionSource = interactionSource,
             modifier = Modifier.size(cardSize),
-            shape = ClickableSurfaceDefaults.shape(shape = CircleShape),
+            shape = ClickableSurfaceDefaults.shape(shape = NetflixxShapes.panel),
             colors =
                 ClickableSurfaceDefaults.colors(
                     containerColor =
@@ -238,7 +238,7 @@ private fun UserIconCard(
                                     width = 3.dp,
                                     color = MaterialTheme.colorScheme.onSurface,
                                 ),
-                            shape = CircleShape,
+                            shape = NetflixxShapes.panel,
                         ),
                 ),
             scale = ClickableSurfaceDefaults.scale(focusedScale = 1.2f),
@@ -256,7 +256,7 @@ private fun UserIconCard(
                         modifier =
                             Modifier
                                 .fillMaxSize()
-                                .clip(CircleShape),
+                                .clip(NetflixxShapes.panel),
                     )
                 } else {
                     // Show big bold first letter of username
@@ -310,7 +310,7 @@ fun UserIconCardImage(
         modifier =
             modifier.background(
                 color = userColor,
-                shape = CircleShape,
+                shape = NetflixxShapes.panel,
             ),
         contentAlignment = Alignment.Center,
     ) {
@@ -323,7 +323,7 @@ fun UserIconCardImage(
                 modifier =
                     Modifier
                         .fillMaxSize()
-                        .clip(CircleShape),
+                        .clip(NetflixxShapes.panel),
             )
         } else {
             val firstLetter =
@@ -381,7 +381,7 @@ private fun AddUserCard(
             onClick = onClick,
             interactionSource = interactionSource,
             modifier = Modifier.size(cardSize),
-            shape = ClickableSurfaceDefaults.shape(shape = CircleShape),
+            shape = ClickableSurfaceDefaults.shape(shape = NetflixxShapes.panel),
             colors =
                 ClickableSurfaceDefaults.colors(
                     containerColor = addUserColor.copy(alpha = 0.4f),
@@ -396,7 +396,7 @@ private fun AddUserCard(
                                     width = 3.dp,
                                     color = MaterialTheme.colorScheme.onSurface,
                                 ),
-                            shape = CircleShape,
+                            shape = NetflixxShapes.panel,
                         ),
                 ),
             scale = ClickableSurfaceDefaults.scale(focusedScale = 1.2f),

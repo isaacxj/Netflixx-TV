@@ -35,6 +35,7 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -223,6 +224,7 @@ fun Tab(
             Text(
                 text = title,
                 fontSize = 16.sp,
+                fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
                 color = contentColor,
                 modifier = Modifier.padding(horizontal = 16.dp),
             )

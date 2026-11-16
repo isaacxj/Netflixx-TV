@@ -268,7 +268,7 @@ fun InstallUpdatePageContent(
                     .fillMaxWidth(.6f)
                     .background(
                         columnColor,
-                        shape = RoundedCornerShape(16.dp),
+                        shape = RoundedCornerShape(8.dp),
                     ).onKeyEvent {
                         if (it.type == KeyEventType.KeyUp) {
                             return@onKeyEvent false
@@ -297,7 +297,7 @@ fun InstallUpdatePageContent(
                     .align(Alignment.CenterVertically)
                     .background(
                         MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
-                        shape = RoundedCornerShape(16.dp),
+                        shape = RoundedCornerShape(8.dp),
                     ).padding(16.dp),
         ) {
             Text(

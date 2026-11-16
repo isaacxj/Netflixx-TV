@@ -4,7 +4,7 @@
 
 The Netflixx app for Android TV and Fire TV: our Jellyfin server on stx-server, in the
 Netflixx look. It's [Wholphin](https://github.com/damontecres/Wholphin) with its own name,
-icon, banner and a Netflixx color theme (near-black with an amber accent, matching the
+icon, banner and a Netflixx color theme (near-black with a red accent, matching the
 Netflixx web theme in [isaacxj/Netflixx](https://github.com/isaacxj/Netflixx)). It installs
 next to Wholphin as `com.isaacxj.netflixx`, and updates itself from this repo's releases.
 
@@ -41,12 +41,12 @@ debug APK with a throwaway key, and each new build needs a fresh install.
 ## Staying up to date with Wholphin
 
 This is a GitHub fork, so **Sync fork** on the repo page pulls in Wholphin's latest changes.
-The Netflixx changes are small and kept apart: `NetflixxThemeColors.kt`, the `NETFLIXX` theme
+The Netflixx changes are small and kept apart: `NetflixxThemeColors.kt`, `NetflixxIntro.kt`, `Type.kt`, the `NETFLIXX` theme
 (default) in `WholphinDataStore.proto`, the app name in `values/strings.xml`, the icons and
 banner under `res/mipmap-*`, the app ID and version in `app/build.gradle.kts`, the update
 source in `AppPreference.kt` and `UpdateChecker.kt`, and the workflows.
 
-Wholphin is licensed under the GPL-2.0, and so is this fork. Everything below is Wholphin's
+Wholphin is licensed under the GPL-2.0, and so is this fork. The app's typeface is [Inter](https://github.com/rsms/inter), under the SIL Open Font License (`LICENSE-Inter.txt`). Everything below is Wholphin's
 own README.
 
 ---
