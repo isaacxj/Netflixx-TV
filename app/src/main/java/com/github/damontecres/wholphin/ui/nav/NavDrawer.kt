@@ -760,11 +760,12 @@ fun navItemColor(
             else -> Color(0xFF505050).copy(alpha = .66f)
         }
     } else {
+        val netflixx = theme == AppThemeColors.NETFLIXX
         val alpha =
             when {
                 drawerOpen -> .85f
-                selected && !drawerOpen -> .5f
-                else -> .2f
+                selected && !drawerOpen -> if (netflixx) 1f else .5f
+                else -> if (netflixx) .45f else .2f
             }
         return when {
             selected && focused -> {

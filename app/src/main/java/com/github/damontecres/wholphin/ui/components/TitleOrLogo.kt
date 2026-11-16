@@ -65,7 +65,7 @@ private fun Title(
         text = title ?: "",
         color = MaterialTheme.colorScheme.onSurface,
         style = MaterialTheme.typography.headlineMedium,
-        fontWeight = FontWeight.SemiBold,
+        fontWeight = FontWeight.Bold,
         maxLines = 2,
         overflow = TextOverflow.Ellipsis,
         modifier = modifier,
